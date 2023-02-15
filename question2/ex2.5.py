@@ -1,11 +1,31 @@
-import sys
-import matplotlib.pyplot as plt
-from time import perf_counter
+import random
 import json
+
+# opening the original input file
+with open('ex2.json', 'r') as f:
+    change_data = json.load(f)
+
+# randomizing the array elements
+for i in range(len(change_data)):
+    random.shuffle(change_data[i])
+
+# writing the shuffled contents into a new file
+with open('ex2.5.json', 'w') as f:
+    json.dump(change_data, f)
+
+
+# The ex2.4.py code is below for plotting with the new input file (just changed the file name)
+#------------------------------------ex2.4.py CODE START----------------------------------------#
+import sys
+import matplotlib.pyplot as plt 
+from time import perf_counter
+#------------------------MOVED json import to top----------------------------#
 sys.setrecursionlimit(20000)
 
 # opening the file
-with open('ex2.json', 'r') as f:
+#---------------------------------CHANGE-------------------------------------#
+with open('ex2.5.json', 'r') as f:
+#---------------------------------CHANGE-------------------------------------#
     data = json.load(f)
 
 
@@ -61,3 +81,4 @@ plt.xlabel("Records")
 plt.ylabel("Time (s)")
 plt.xticks(recordNum)
 plt.show()
+#-------------------------------------ex2.4.py CODE END-----------------------------------------#
